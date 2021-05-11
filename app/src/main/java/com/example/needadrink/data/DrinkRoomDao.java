@@ -15,8 +15,8 @@ public interface DrinkRoomDao
         @Insert(onConflict = OnConflictStrategy.REPLACE)
         void insertDrink(Drink... drinks);
 
-//        @Delete
-//        void delete(Drink drink);
+        @Query("DELETE from drink_table")
+        void clearTable();
 
         @Query("SELECT * FROM drink_table")
         LiveData<List<Drink>> getAllDrinks();

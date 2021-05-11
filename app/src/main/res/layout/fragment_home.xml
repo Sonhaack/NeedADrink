@@ -4,107 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background2"
     tools:context=".ui.home.HomeFragment">
 
+
+    <ImageView
+
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:paddingTop="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/logo_drink_transparent"
+        />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
         android:layout_width="114dp"
         android:layout_height="49dp"
         android:ems="10"
-        android:inputType="number"
-        android:text="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName2"
-        android:layout_width="119dp"
-        android:layout_height="39dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName3"
-        android:layout_width="116dp"
-        android:layout_height="42dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="alcoholic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName4"
-        android:layout_width="114dp"
-        android:layout_height="42dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="instructions"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName5"
-        android:layout_width="116dp"
-        android:layout_height="41dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="ingredient1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName6"
-        android:layout_width="118dp"
-        android:layout_height="39dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="ingredient2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName7"
-        android:layout_width="119dp"
-        android:layout_height="39dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="ingredient3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName8"
-        android:layout_width="118dp"
-        android:layout_height="37dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="ingredient4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName7" />
-
-    <EditText
-        android:id="@+id/editTextTextImg"
-        android:layout_width="120dp"
-        android:layout_height="49dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="img"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName8" />
+        android:inputType="text"
+        android:text="margarita"
+        app:layout_constraintBottom_toTopOf="@+id/button_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textview_drinkname"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
-        android:id="@+id/buttonInsert"
+        android:id="@+id/button_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="INSERT"
+        android:text="Search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextImg" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
+    <TextView
+        android:id="@+id/textview_drinkname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="25dp"
+        android:text="Search drink"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

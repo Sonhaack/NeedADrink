@@ -1,14 +1,7 @@
 package com.example.needadrink.data;
 
-import androidx.annotation.NonNull;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
-@Entity(tableName = "drink_table")
-public class Drink
+public class DrinkResponse
     {
-        @PrimaryKey
-        @NonNull
         private String idDrink;
         private String strDrink;
         private String strAlcoholic;
@@ -23,7 +16,24 @@ public class Drink
         private String strIngredient7;
         private String strIngredient8;
 
-        public Drink(@NonNull String idDrink, String strDrink, String strAlcoholic, String strInstructions, String strDrinkThump, String strIngredient1, String strIngredient2, String strIngredient3, String strIngredient4, String strIngredient5, String strIngredient6, String strIngredient7, String strIngredient8)
+        public DrinkResponse(String idDrink)
+            {
+                this.idDrink = idDrink;
+                this.strDrink = "";
+                this.strAlcoholic = "";
+                this.strInstructions = "";
+                this.strDrinkThump = "";
+                this.strIngredient1 = "";
+                this.strIngredient2 = "";
+                this.strIngredient3 = "";
+                this.strIngredient4 = "";
+                this.strIngredient5 = "";
+                this.strIngredient6 = "";
+                this.strIngredient7 = "";
+                this.strIngredient8 = "";
+            }
+
+        public DrinkResponse(String idDrink, String strDrink, String strAlcoholic, String strInstructions, String strDrinkThump, String strIngredient1, String strIngredient2, String strIngredient3, String strIngredient4, String strIngredient5, String strIngredient6, String strIngredient7, String strIngredient8)
             {
                 this.idDrink = idDrink;
                 this.strDrink = strDrink;
@@ -40,13 +50,12 @@ public class Drink
                 this.strIngredient8 = strIngredient8;
             }
 
-        @NonNull
         public String getIdDrink()
             {
                 return idDrink;
             }
 
-        public void setIdDrink(@NonNull String idDrink)
+        public void setIdDrink(String idDrink)
             {
                 this.idDrink = idDrink;
             }
