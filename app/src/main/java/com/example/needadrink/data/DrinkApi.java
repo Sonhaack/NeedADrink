@@ -9,10 +9,8 @@ import retrofit2.http.Query;
 
 public interface DrinkApi
     {
-//        @GET("search.php?s={drink}")
-//        Call<List<DrinkResponse>> searchDrink(@Path("drink") String drink);
 
         @GET("search.php")
-        Call<List<DrinkResponse>> searchDrink(@Query("s") String drink);
+        Call<ApiResponseContainer> searchDrink(@Query("s") String drink);
 
     }

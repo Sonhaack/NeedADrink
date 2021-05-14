@@ -1,177 +1,69 @@
 package com.example.needadrink.data;
 
-import androidx.annotation.NonNull;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import java.util.List;
 
-@Entity(tableName = "drink_table")
-public class Drink
+public class ApiResponseDrink
     {
-        @PrimaryKey
-        @NonNull
-        public String idDrink;
-        public String strDrink;
-        public String strDrinkAlternate;
-        public String strTags;
-        public String strVideo;
-        public String strCategory;
-        public String strIBA;
-        public String strAlcoholic;
-        public String strGlass;
-        public String strInstructions;
-        public String strInstructionsES;
-        public String strInstructionsDE;
-        public String strInstructionsFR;
-        public String strInstructionsIT;
-        public String strDrinkThumb;
-        public String strIngredient1;
-        public String strIngredient2;
-        public String strIngredient3;
-        public String strIngredient4;
-        public String strIngredient5;
-        public String strIngredient6;
-        public String strIngredient7;
-        public String strIngredient8;
-        public String strIngredient9;
-        public String strIngredient10;
-        public String strIngredient11;
-        public String strIngredient12;
-        public String strIngredient13;
-        public String strIngredient14;
-        public String strIngredient15;
-        public String strMeasure1;
-        public String strMeasure2;
-        public String strMeasure3;
-        public String strMeasure4;
-        public String strMeasure5;
-        public String strMeasure6;
-        public String strMeasure7;
-        public String strMeasure8;
-        public String strMeasure9;
-        public String strMeasure10;
-        public String strMeasure11;
-        public String strMeasure12;
-        public String strMeasure13;
-        public String strMeasure14;
-        public String strMeasure15;
-        public String strImageSource;
-        public String strImageAttribution;
-        public String strCreativeCommonsConfirmed;
-        public String dateModified;
+            public String idDrink;
+            public String strDrink;
+            public String strDrinkAlternate;
+            public String strTags;
+            public String strVideo;
+            public String strCategory;
+            public String strIBA;
+            public String strAlcoholic;
+            public String strGlass;
+            public String strInstructions;
+            public String strInstructionsES;
+            public String strInstructionsDE;
+            public String strInstructionsFR;
+            public String strInstructionsIT;
+            public String strDrinkThumb;
+            public String strIngredient1;
+            public String strIngredient2;
+            public String strIngredient3;
+            public String strIngredient4;
+            public String strIngredient5;
+            public String strIngredient6;
+            public String strIngredient7;
+            public String strIngredient8;
+            public String strIngredient9;
+            public String strIngredient10;
+            public String strIngredient11;
+            public String strIngredient12;
+            public String strIngredient13;
+            public String strIngredient14;
+            public String strIngredient15;
+            public String strMeasure1;
+            public String strMeasure2;
+            public String strMeasure3;
+            public String strMeasure4;
+            public String strMeasure5;
+            public String strMeasure6;
+            public String strMeasure7;
+            public String strMeasure8;
+            public String strMeasure9;
+            public String strMeasure10;
+            public String strMeasure11;
+            public String strMeasure12;
+            public String strMeasure13;
+            public String strMeasure14;
+            public String strMeasure15;
+            public String strImageSource;
+            public String strImageAttribution;
+            public String strCreativeCommonsConfirmed;
+            public String dateModified;
 
-        public Drink(@NonNull String idDrink, String strDrink, String strDrinkAlternate, String strTags, String strVideo, String strCategory, String strIBA, String strAlcoholic, String strGlass, String strInstructions, String strInstructionsES, String strInstructionsDE, String strInstructionsFR, String strInstructionsIT, String strDrinkThumb, String strIngredient1, String strIngredient2, String strIngredient3, String strIngredient4, String strIngredient5, String strIngredient6, String strIngredient7, String strIngredient8, String strIngredient9, String strIngredient10, String strIngredient11, String strIngredient12, String strIngredient13, String strIngredient14, String strIngredient15, String strMeasure1, String strMeasure2, String strMeasure3, String strMeasure4, String strMeasure5, String strMeasure6, String strMeasure7, String strMeasure8, String strMeasure9, String strMeasure10, String strMeasure11, String strMeasure12, String strMeasure13, String strMeasure14, String strMeasure15, String strImageSource, String strImageAttribution, String strCreativeCommonsConfirmed, String dateModified)
+        public ApiResponseDrink()
             {
-                this.idDrink = idDrink;
-                this.strDrink = strDrink;
-                this.strDrinkAlternate = strDrinkAlternate;
-                this.strTags = strTags;
-                this.strVideo = strVideo;
-                this.strCategory = strCategory;
-                this.strIBA = strIBA;
-                this.strAlcoholic = strAlcoholic;
-                this.strGlass = strGlass;
-                this.strInstructions = strInstructions;
-                this.strInstructionsES = strInstructionsES;
-                this.strInstructionsDE = strInstructionsDE;
-                this.strInstructionsFR = strInstructionsFR;
-                this.strInstructionsIT = strInstructionsIT;
-                this.strDrinkThumb = strDrinkThumb;
-                this.strIngredient1 = strIngredient1;
-                this.strIngredient2 = strIngredient2;
-                this.strIngredient3 = strIngredient3;
-                this.strIngredient4 = strIngredient4;
-                this.strIngredient5 = strIngredient5;
-                this.strIngredient6 = strIngredient6;
-                this.strIngredient7 = strIngredient7;
-                this.strIngredient8 = strIngredient8;
-                this.strIngredient9 = strIngredient9;
-                this.strIngredient10 = strIngredient10;
-                this.strIngredient11 = strIngredient11;
-                this.strIngredient12 = strIngredient12;
-                this.strIngredient13 = strIngredient13;
-                this.strIngredient14 = strIngredient14;
-                this.strIngredient15 = strIngredient15;
-                this.strMeasure1 = strMeasure1;
-                this.strMeasure2 = strMeasure2;
-                this.strMeasure3 = strMeasure3;
-                this.strMeasure4 = strMeasure4;
-                this.strMeasure5 = strMeasure5;
-                this.strMeasure6 = strMeasure6;
-                this.strMeasure7 = strMeasure7;
-                this.strMeasure8 = strMeasure8;
-                this.strMeasure9 = strMeasure9;
-                this.strMeasure10 = strMeasure10;
-                this.strMeasure11 = strMeasure11;
-                this.strMeasure12 = strMeasure12;
-                this.strMeasure13 = strMeasure13;
-                this.strMeasure14 = strMeasure14;
-                this.strMeasure15 = strMeasure15;
-                this.strImageSource = strImageSource;
-                this.strImageAttribution = strImageAttribution;
-                this.strCreativeCommonsConfirmed = strCreativeCommonsConfirmed;
-                this.dateModified = dateModified;
             }
 
-        public Drink(ApiResponseDrink ard)
-            {
-                this.idDrink = ard.idDrink;
-                this.strDrink = ard.strDrink;
-                this.strDrinkAlternate = ard.strDrinkAlternate;
-                this.strTags = ard.strTags;
-                this.strVideo = ard.strVideo;
-                this.strCategory = ard.strCategory;
-                this.strIBA = ard.strIBA;
-                this.strAlcoholic = ard.strAlcoholic;
-                this.strGlass = ard.strGlass;
-                this.strInstructions = ard.strInstructions;
-                this.strInstructionsES = ard.strInstructionsES;
-                this.strInstructionsDE = ard.strInstructionsDE;
-                this.strInstructionsFR = ard.strInstructionsFR;
-                this.strInstructionsIT = ard.strInstructionsIT;
-                this.strDrinkThumb = ard.strDrinkThumb;
-                this.strIngredient1 = ard.strIngredient1;
-                this.strIngredient2 = ard.strIngredient2;
-                this.strIngredient3 = ard.strIngredient3;
-                this.strIngredient4 = ard.strIngredient4;
-                this.strIngredient5 = ard.strIngredient5;
-                this.strIngredient6 = ard.strIngredient6;
-                this.strIngredient7 = ard.strIngredient7;
-                this.strIngredient8 = ard.strIngredient8;
-                this.strIngredient9 = ard.strIngredient9;
-                this.strIngredient10 = ard.strIngredient10;
-                this.strIngredient11 = ard.strIngredient11;
-                this.strIngredient12 = ard.strIngredient12;
-                this.strIngredient13 = ard.strIngredient13;
-                this.strIngredient14 = ard.strIngredient14;
-                this.strIngredient15 = ard.strIngredient15;
-                this.strMeasure1 = ard.strMeasure1;
-                this.strMeasure2 = ard.strMeasure2;
-                this.strMeasure3 = ard.strMeasure3;
-                this.strMeasure4 = ard.strMeasure4;
-                this.strMeasure5 = ard.strMeasure5;
-                this.strMeasure6 = ard.strMeasure6;
-                this.strMeasure7 = ard.strMeasure7;
-                this.strMeasure8 = ard.strMeasure8;
-                this.strMeasure9 = ard.strMeasure9;
-                this.strMeasure10 = ard.strMeasure10;
-                this.strMeasure11 = ard.strMeasure11;
-                this.strMeasure12 = ard.strMeasure12;
-                this.strMeasure13 = ard.strMeasure13;
-                this.strMeasure14 = ard.strMeasure14;
-                this.strMeasure15 = ard.strMeasure15;
-                this.strImageSource = ard.strImageSource;
-                this.strImageAttribution = ard.strImageAttribution;
-                this.strCreativeCommonsConfirmed = ard.strCreativeCommonsConfirmed;
-                this.dateModified = ard.dateModified;
-            }
-
-        @NonNull
         public String getIdDrink()
             {
                 return idDrink;
             }
 
-        public void setIdDrink(@NonNull String idDrink)
+        public void setIdDrink(String idDrink)
             {
                 this.idDrink = idDrink;
             }

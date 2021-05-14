@@ -9,6 +9,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
+import javax.security.auth.login.LoginException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -17,11 +19,12 @@ public class DrinkRepository
     {
         private DrinkRoomDao drinkRoomDao;
         private LiveData<List<Drink>> getAllDrinks;
-        private MutableLiveData<List<DrinkResponse>> listSearchDrink;
+        private MutableLiveData<List<ApiResponseDrink>> listSearchDrink;
 
         public DrinkRepository(Application application)
             {
                 listSearchDrink = new MutableLiveData<>();
+
                 DrinkDatabase Database = DrinkDatabase.getDatabase(application);
                 drinkRoomDao = Database.drinkRoomDao();
                 getAllDrinks = drinkRoomDao.getAllDrinks();
@@ -41,22 +44,26 @@ public class DrinkRepository
         public void searchDrink(String drink)
             {
                 //api call
-                Call<List<DrinkResponse>> call = ServiceGenerator.getDrinkApi().searchDrink(drink);
-                call.enqueue(new Callback<List<DrinkResponse>>()
+                Call<ApiResponseContainer> call = ServiceGenerator.getDrinkApi().searchDrink(drink);
+                call.enqueue(new Callback<ApiResponseContainer>()
                     {
+
                         @Override
-                        public void onResponse(Call<List<DrinkResponse>> call, Response<List<DrinkResponse>> response)
+                        public void onResponse(Call<ApiResponseContainer> call, Response<ApiResponseContainer> response)
                             {
-                                if(response.isSuccessful())
+                                listSearchDrink.setValue(response.body().getDrinks());
+                                Log.e("Retrofit","Yes!");
+
+                                for (ApiResponseDrink ard: response.body().getDrinks())
                                     {
-                                        listSearchDrink.setValue(response.body());
+                                        insert(new Drink(ard));
                                     }
                             }
 
                         @Override
-                        public void onFailure(Call<List<DrinkResponse>> call, Throwable t)
+                        public void onFailure(Call<ApiResponseContainer> call, Throwable t)
                             {
-                                Log.i("Retrofit", "Something went wrong with retrofit :(");
+                                Log.i("Retrofit", "Retrofit Failure:" + t.getMessage());
                             }
                     });
             }

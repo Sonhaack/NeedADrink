@@ -37,9 +37,8 @@ public class RecyclerFragment extends Fragment
                 View root = inflater.inflate(R.layout.fragment_recycler, container, false);
 
                 final RecyclerView recyclerView = root.findViewById(R.id.r_v);
-//                recyclerView.hasFixedSize();
+                recyclerView.hasFixedSize();
                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
                 DrinkAdapter drinkAdapter = new DrinkAdapter(getContext());
                 recyclerView.setAdapter(drinkAdapter);
 

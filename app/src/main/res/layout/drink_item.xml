@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp">
@@ -8,21 +10,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="5dp">
-
-        <ImageView android:id="@+id/drink_Image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/fui_ic_check_circle_black_128dp"
-            android:layout_alignParentStart="true"/>
-
-        <TextView android:id="@+id/drink_Name"
+        <TextView
+            android:id="@+id/drink_Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/drink_alcoholic"
+            android:layout_toEndOf="@+id/imageView2"
+            android:gravity="center_horizontal"
             android:text="White Russian"
-            android:layout_centerInParent="true"
-            android:ellipsize="end"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
         <TextView android:id="@+id/drink_alcoholic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,6 +27,12 @@
             android:text="Alcoholic"
             android:layout_alignParentEnd="true"
             android:textAlignment="textEnd"/>
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="98dp"
+            android:layout_height="71dp"
+            tools:srcCompat="@tools:sample/avatars" />
 
     </RelativeLayout>
 

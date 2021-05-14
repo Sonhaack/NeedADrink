@@ -13,7 +13,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.needadrink.ui.RecyclerView.RecyclerViewModel;
 
-@Database(entities = {Drink.class}, version = 7, exportSchema = false)
+@Database(entities = {Drink.class}, version = 9, exportSchema = false)
 public abstract class DrinkDatabase extends RoomDatabase
     {
         private static DrinkDatabase instance;
@@ -33,7 +33,6 @@ public abstract class DrinkDatabase extends RoomDatabase
                                                 .allowMainThreadQueries() //todo - main thread
                                                 .build();
                                     }
-
                             }
                     }
                 return instance;
