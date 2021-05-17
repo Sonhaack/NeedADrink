@@ -19,4 +19,7 @@ public class SlideshowViewModel extends ViewModel
             {
                 return mText;
             }
+
+
+
     }

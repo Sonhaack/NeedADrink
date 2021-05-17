@@ -1,6 +1,5 @@
 package com.example.needadrink.ui.RecyclerView;
 
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -14,15 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.needadrink.R;
-import com.example.needadrink.data.Drink;
 import com.example.needadrink.data.DrinkAdapter;
-import com.example.needadrink.ui.home.HomeViewModel;
-
-import java.util.List;
 
 public class RecyclerFragment extends Fragment
     {
@@ -41,8 +34,19 @@ public class RecyclerFragment extends Fragment
                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 DrinkAdapter drinkAdapter = new DrinkAdapter(getContext());
                 recyclerView.setAdapter(drinkAdapter);
-
-                recyclerViewModel.getAllDrinks().observe(getViewLifecycleOwner(), drinks -> drinkAdapter.setDrinks(drinks));
+                drinkAdapter.setOnListItemClickListener(new DrinkAdapter.OnListItemClickListener()
+                    {
+                        @Override
+                        public void onClick(int position)
+                            {
+                                // DrinkAdapter
+                            }
+                    });
+                recyclerViewModel.getAllDrinks().observe(getViewLifecycleOwner(), drinks ->
+                {
+                    drinkAdapter.setDrinks(drinks);
+                });
+                drinkAdapter.clearList();
                 return root;
             }
 

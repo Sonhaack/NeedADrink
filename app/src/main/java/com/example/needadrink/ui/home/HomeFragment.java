@@ -37,14 +37,12 @@ public class HomeFragment extends Fragment
                 {
                     homeViewModel.searchDrink(name.getText().toString());
 
+                    // start new fragment
                     FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                     RecyclerFragment fragment = new RecyclerFragment();
                     fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
                     fragmentTransaction.addToBackStack( "tag" );
                     fragmentTransaction.commit();
-
-
-
                 });
                 return root;
             }

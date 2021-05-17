@@ -1,6 +1,7 @@
 package com.example.needadrink.data;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -10,15 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.needadrink.R;
+import com.example.needadrink.ui.result.ResultActivity;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.InputStream;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +29,18 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.DrinkViewHol
     {
         private final LayoutInflater inflater;
         private List<Drink> drinks = new ArrayList<>();
-        OnListItemClickListener listItemClickListener;
+        OnListItemClickListener onListItemClickListener;
+
+        public interface OnListItemClickListener
+            {
+                void onClick(int position);
+            }
+
+        public void setOnListItemClickListener(OnListItemClickListener listener)
+            {
+                onListItemClickListener = listener;
+            }
+
 
         public DrinkAdapter(Context context)
             {
@@ -39,8 +53,8 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.DrinkViewHol
         @Override
         public DrinkViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
             {
-                View itemView = inflater.from(parent.getContext()).inflate(R.layout.drink_item,parent,false);
-                return new DrinkViewHolder(itemView);
+                View itemView = inflater.from(parent.getContext()).inflate(R.layout.drink_item, parent, false);
+                return new DrinkViewHolder(itemView, onListItemClickListener);
             }
 
         @Override
@@ -66,56 +80,46 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.DrinkViewHol
 
         class DrinkViewHolder extends RecyclerView.ViewHolder
             {
-
                 private TextView textViewName;
                 private TextView textViewAlcoholic;
                 private ImageView img;
 
-                public DrinkViewHolder(@NonNull View itemView)
+                public DrinkViewHolder(@NonNull View itemView, OnListItemClickListener listener)
                     {
                         super(itemView);
                         textViewName = itemView.findViewById(R.id.drink_Name);
                         textViewAlcoholic = itemView.findViewById(R.id.drink_alcoholic);
                         img = itemView.findViewById(R.id.imageView2);
+                        itemView.setOnClickListener(new View.OnClickListener()
+                            {
+                                @Override
+                                public void onClick(View v)
+                                    {
+                                        if (listener != null)
+                                            {
+                                                int position = getAdapterPosition();
+                                                if (position != RecyclerView.NO_POSITION)
+                                                    {
+                                                        Intent intent = new Intent(v.getContext(), ResultActivity.class);
+                                                        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                                                        Drink drink = drinks.get(position);
+                                                        String jsonString = gson.toJson(drink);
+                                                        intent.putExtra("drink", jsonString);
+                                                        v.getContext().startActivity(intent);
+                                                    }
+                                            }
+                                    }
+                            });
                     }
-                public void loadImage(String url){
-                    new DownloadImageTask(img).execute(url);
-                }
-
-
-
-
-                private class DownloadImageTask extends AsyncTask<String, Void, Bitmap>
+                public void loadImage(String url)
                     {
-                    ImageView bmImage;
-
-                    public DownloadImageTask(ImageView bmImage) {
-                        this.bmImage = bmImage;
+                        new DownloadImageTask(img).execute(url);
                     }
-
-                    protected Bitmap doInBackground(String... urls) {
-                        String urldisplay = urls[0];
-                        Bitmap mIcon11 = null;
-                        try {
-                            InputStream in = new java.net.URL(urldisplay).openStream();
-                            mIcon11 = BitmapFactory.decodeStream(in);
-                        } catch (Exception e) {
-                            Log.e("Error", e.getMessage());
-                            e.printStackTrace();
-                        }
-                        return mIcon11;
-                    }
-
-                    protected void onPostExecute(Bitmap result) {
-                        bmImage.setImageBitmap(result);
-                    }
-                }
-
             }
 
-        public interface OnListItemClickListener
+        public void clearList()
             {
-                void onClick();
+                drinks.clear();
             }
 
 

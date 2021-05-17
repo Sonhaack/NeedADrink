@@ -1,4 +1,5 @@
-package com.example.needadrink.ui.RecyclerView;
+package com.example.needadrink.ui.result;
+
 
 import android.app.Application;
 
@@ -8,25 +9,31 @@ import androidx.lifecycle.LiveData;
 import com.example.needadrink.data.Drink;
 import com.example.needadrink.data.DrinkRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewModel extends AndroidViewModel
+public class ResultViewModel extends AndroidViewModel
     {
 
         private DrinkRepository drinkRepository;
         private LiveData<List<Drink>> allDrinks;
 
-        public RecyclerViewModel(Application application)
+        public ResultViewModel(Application application)
             {
                 super(application);
                 drinkRepository = new DrinkRepository(application);
                 allDrinks = drinkRepository.getAllDrinks();
 
             }
+
         public LiveData<List<Drink>> getAllDrinks()
             {
                 return allDrinks;
             }
 
+        public void setFav(String drinkID)
+            {
+                drinkRepository.getDrinkRoomDao().setFav(drinkID);
+            }
 
     }
