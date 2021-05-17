@@ -68,6 +68,7 @@ public class DrinkRepository
                     });
             }
 
+
         private static class InsertDrinkAsyncTask extends AsyncTask<Drink, Void, Void>
             {
 
@@ -86,4 +87,8 @@ public class DrinkRepository
                     }
             }
 
+        public DrinkRoomDao getDrinkRoomDao()
+            {
+                return drinkRoomDao;
+            }
     }
