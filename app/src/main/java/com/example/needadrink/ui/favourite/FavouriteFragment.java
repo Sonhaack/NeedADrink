@@ -35,10 +35,6 @@ public class FavouriteFragment extends Fragment
                 {
                     NavigationView.inflate(getContext(),R.layout.fragment_slideshow,container);
 
-//                    getParentFragment()
-//                  FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                  fragmentTransaction.replace(R.id.framelayout_gallery, fragment);
-
                 });
 
 

@@ -46,7 +46,6 @@ public class RecyclerFragment extends Fragment
                 {
                     drinkAdapter.setDrinks(drinks);
                 });
-                drinkAdapter.clearList();
                 return root;
             }
 
