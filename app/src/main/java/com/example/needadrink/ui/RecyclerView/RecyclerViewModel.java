@@ -28,5 +28,4 @@ public class RecyclerViewModel extends AndroidViewModel
                 return allDrinks;
             }
 
-
     }

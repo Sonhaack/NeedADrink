@@ -15,15 +15,16 @@ public interface DrinkRoomDao
         @Insert(onConflict = OnConflictStrategy.REPLACE)
         void insertDrink(Drink... drinks);
 
-
         @Query("DELETE from drink_table")
         void clearTable();
 
         @Query("SELECT * FROM drink_table")
         LiveData<List<Drink>> getAllDrinks();
 
-        @Query("Update drink_table set isFav = 'true' Where idDrink = :drinkID ")
+        @Query("Update drink_table set isFav = 1 Where idDrink = :drinkID ")
         void setFav(String drinkID);
+
+
 
 
     }

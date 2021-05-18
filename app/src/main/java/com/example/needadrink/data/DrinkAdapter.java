@@ -29,7 +29,7 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.DrinkViewHol
     {
         private final LayoutInflater inflater;
         private List<Drink> drinks = new ArrayList<>();
-        OnListItemClickListener onListItemClickListener;
+        private OnListItemClickListener onListItemClickListener;
 
         public interface OnListItemClickListener
             {
@@ -45,8 +45,6 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.DrinkViewHol
         public DrinkAdapter(Context context)
             {
                 this.inflater = LayoutInflater.from(context);
-
-
             }
 
         @NonNull
@@ -54,6 +52,7 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.DrinkViewHol
         public DrinkViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
             {
                 View itemView = inflater.from(parent.getContext()).inflate(R.layout.drink_item, parent, false);
+                DrinkViewHolder drinkViewHolder = new DrinkViewHolder(itemView, onListItemClickListener);
                 return new DrinkViewHolder(itemView, onListItemClickListener);
             }
 
@@ -95,11 +94,13 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.DrinkViewHol
                                 @Override
                                 public void onClick(View v)
                                     {
+
                                         if (listener != null)
                                             {
                                                 int position = getAdapterPosition();
                                                 if (position != RecyclerView.NO_POSITION)
                                                     {
+                                                        onListItemClickListener.onClick(position);
                                                         Intent intent = new Intent(v.getContext(), ResultActivity.class);
                                                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
                                                         Drink drink = drinks.get(position);
@@ -116,11 +117,4 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.DrinkViewHol
                         new DownloadImageTask(img).execute(url);
                     }
             }
-
-        public void clearList()
-            {
-                drinks.clear();
-            }
-
-
     }

@@ -24,7 +24,6 @@ public class DrinkRepository
         public DrinkRepository(Application application)
             {
                 listSearchDrink = new MutableLiveData<>();
-
                 DrinkDatabase Database = DrinkDatabase.getDatabase(application);
                 drinkRoomDao = Database.drinkRoomDao();
                 getAllDrinks = drinkRoomDao.getAllDrinks();
