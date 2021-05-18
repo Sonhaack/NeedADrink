@@ -4,47 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background2"
     tools:context=".ui.result.ResultActivity">
 
 
     <ImageView
+        android:layout_marginTop="5dp"
         android:id="@+id/result_image"
-        android:layout_width="175dp"
-        android:layout_height="175dp"
+        android:layout_width="232dp"
+        android:layout_height="211dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/logo_drink_transparent" />
 
     <LinearLayout
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/result_image">
 
         <TextView
+            android:layout_marginTop="25dp"
             android:id="@+id/result_drinkname"
             android:layout_width="wrap_content"
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Name" />
 
         <TextView
             android:id="@+id/result_alcoholic"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Alcoholic" />
 
         <TextView
+            android:layout_marginTop="25dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ingredients:" />
 
         <ScrollView
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="50dp">
 
@@ -52,19 +57,21 @@
                 android:id="@+id/result_ingredients"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="bla bla bla"/>
+                android:text="bla bla bla" />
         </ScrollView>
 
         <TextView
+            android:layout_marginTop="25dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Instuctions:" />
+            android:text="Instructions:" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="123dp">
 
             <TextView
+                android:layout_marginTop="5dp"
                 android:id="@+id/result_instructions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
