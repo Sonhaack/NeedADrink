@@ -33,7 +33,7 @@ public class ResultViewModel extends AndroidViewModel
 
         public void setFav(String drinkID)
             {
-                drinkRepository.getDrinkRoomDao().setFav(drinkID);
+                drinkRepository.setFavDrink(drinkID);
             }
 
     }

@@ -1,23 +1,17 @@
 package com.example.needadrink.ui.result;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
+import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.needadrink.R;
 import com.example.needadrink.data.DownloadImageTask;
 import com.example.needadrink.data.Drink;
-import com.example.needadrink.data.DrinkAdapter;
 import com.google.gson.Gson;
 
-import java.io.InputStream;
+
 
 public class ResultActivity extends AppCompatActivity
     {
@@ -26,6 +20,7 @@ public class ResultActivity extends AppCompatActivity
         @Override
         protected void onCreate(Bundle savedInstanceState)
             {
+                resultViewModel = new ViewModelProvider(this).get(ResultViewModel.class);
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_result);
                 Bundle extra = getIntent().getExtras();
@@ -36,6 +31,7 @@ public class ResultActivity extends AppCompatActivity
                 TextView alcoholic = findViewById(R.id.result_alcoholic);
                 TextView ingredient = findViewById(R.id.result_ingredients);
                 TextView instructions = findViewById(R.id.result_instructions);
+
 
                 String drinkJson;
                 if(extra != null)
@@ -96,8 +92,10 @@ public class ResultActivity extends AppCompatActivity
 
                         fav.setOnClickListener(v ->
                         {
-//                            resultViewModel.setFav(drink.idDrink);
+
+                            resultViewModel.setFav(drink.idDrink);
                             Toast.makeText(this, "Added to favourites", Toast.LENGTH_SHORT).show();
+
                         });
                     }
             }

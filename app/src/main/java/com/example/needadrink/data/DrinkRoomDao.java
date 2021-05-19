@@ -24,7 +24,6 @@ public interface DrinkRoomDao
         @Query("Update drink_table set isFav = 1 Where idDrink = :drinkID ")
         void setFav(String drinkID);
 
-
-
-
+        @Query("SELECT * FROM drink_table where isFav = 1")
+        LiveData<List<Drink>> getFavDrinks();
     }

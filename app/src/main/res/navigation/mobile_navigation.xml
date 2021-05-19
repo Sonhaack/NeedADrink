@@ -25,9 +25,9 @@
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.example.needadrink.ui.slideshow.SlideshowFragment"
+        android:name="com.example.needadrink.ui.random.RandomFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_random" />
     <fragment
         android:id="@+id/nav_recycler"
         android:name="com.example.needadrink.ui.RecyclerView.RecyclerFragment"

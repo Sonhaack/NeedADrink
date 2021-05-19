@@ -19,6 +19,7 @@ public class DrinkRepository
     {
         private DrinkRoomDao drinkRoomDao;
         private LiveData<List<Drink>> getAllDrinks;
+        private LiveData<List<Drink>> getFavDrinks;
         private MutableLiveData<List<ApiResponseDrink>> listSearchDrink;
 
         public DrinkRepository(Application application)
@@ -27,6 +28,7 @@ public class DrinkRepository
                 DrinkDatabase Database = DrinkDatabase.getDatabase(application);
                 drinkRoomDao = Database.drinkRoomDao();
                 getAllDrinks = drinkRoomDao.getAllDrinks();
+                getFavDrinks = drinkRoomDao.getFavDrinks();
             }
 
 
@@ -38,6 +40,13 @@ public class DrinkRepository
         public LiveData<List<Drink>> getAllDrinks()
             {
                 return getAllDrinks;
+            }
+
+
+        //todo favdrinks
+        public LiveData<List<Drink>> getFavDrinks()
+            {
+                return getFavDrinks;
             }
 
         public void searchDrink(String drink)
@@ -86,8 +95,8 @@ public class DrinkRepository
                     }
             }
 
-        public DrinkRoomDao getDrinkRoomDao()
+        public void setFavDrink(String drinkID)
             {
-                return drinkRoomDao;
+                drinkRoomDao.setFav(drinkID);
             }
     }

@@ -1,22 +1,37 @@
 package com.example.needadrink.ui.favourite;
 
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class FavouriteViewModel extends ViewModel
+import com.example.needadrink.data.Drink;
+import com.example.needadrink.data.DrinkRepository;
+
+import java.util.List;
+
+public class FavouriteViewModel extends AndroidViewModel
     {
 
-        private MutableLiveData<String> mText;
+        private DrinkRepository drinkRepository;
+        private LiveData<List<Drink>> allDrinks;
+        private LiveData<List<Drink>> allFavDrinks;
 
-        public FavouriteViewModel()
+        public FavouriteViewModel(Application application)
             {
-                mText = new MutableLiveData<>();
-                mText.setValue("This is gallery fragment");
+                super(application);
+                drinkRepository = new DrinkRepository(application);
+                allDrinks = drinkRepository.getAllDrinks();
+                allFavDrinks = drinkRepository.getFavDrinks();
             }
-
-        public LiveData<String> getText()
+        public LiveData<List<Drink>> getAllDrinks()
             {
-                return mText;
+                return allDrinks;
+            }
+        public LiveData<List<Drink>> getAllFavDrinks()
+            {
+                return allFavDrinks;
             }
     }

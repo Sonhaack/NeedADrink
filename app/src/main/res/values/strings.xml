@@ -9,6 +9,6 @@
 
     <string name="menu_home">Search</string>
     <string name="menu_gallery">Favourite</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_recycler">Recycler</string>
+    <string name="menu_slideshow">Random</string>
+    <string name="menu_recycler">Last search</string>
 </resources>
