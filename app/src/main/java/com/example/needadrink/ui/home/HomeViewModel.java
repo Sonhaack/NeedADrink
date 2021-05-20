@@ -26,7 +26,7 @@ public class HomeViewModel extends AndroidViewModel
             }
         public void searchDrink(String drink)
             {
-                repository.setSearchDrinks(drink);
+//                repository.setSearchDrinks(drink);
                 repository.searchDrink(drink);
 
             }

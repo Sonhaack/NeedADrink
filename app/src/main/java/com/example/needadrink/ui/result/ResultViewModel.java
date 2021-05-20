@@ -26,9 +26,9 @@ public class ResultViewModel extends AndroidViewModel
 
             }
 
-        public LiveData<List<Drink>> getAllDrinks()
+        public void removeFav(String drinkID)
             {
-                return allDrinks;
+                drinkRepository.removeFavDrink(drinkID);
             }
 
         public void setFav(String drinkID)

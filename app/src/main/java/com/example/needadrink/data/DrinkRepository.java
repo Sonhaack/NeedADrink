@@ -41,13 +41,6 @@ public class DrinkRepository
                 new InsertDrinkAsyncTask(drinkRoomDao).execute(drink);
             }
 
-
-
-        public void setSearchDrinks(String search)
-            {
-                getSearchDrinks.setValue(drinkRoomDao.getSearchDrinks(search).getValue());
-            }
-
         public LiveData<List<Drink>> getSearchDrinks()
             {
                 return getSearchDrinks;
@@ -97,7 +90,6 @@ public class DrinkRepository
             }
         public void randomDrink()
             {
-
                 Call<ApiResponseContainer> call = ServiceGenerator.getDrinkApi().randomDrink();
                 call.enqueue(new Callback<ApiResponseContainer>()
                     {
@@ -105,9 +97,9 @@ public class DrinkRepository
                         public void onResponse(Call<ApiResponseContainer> call, Response<ApiResponseContainer> response)
                             {
                                 randomDrink.setValue(response.body().getDrinks());
+                                insert(new Drink(randomDrink.getValue().get(0)));
                                 Log.i("Retrofit",response.body().getDrinks().get(0).getStrDrink());
                             }
-
                         @Override
                         public void onFailure(Call<ApiResponseContainer> call, Throwable t)
                             {
@@ -135,10 +127,16 @@ public class DrinkRepository
                     }
             }
 
+        public void removeFavDrink(String drinkID)
+            {
+                drinkRoomDao.removeFav(drinkID);
+            }
+
         public void setFavDrink(String drinkID)
             {
                 drinkRoomDao.setFav(drinkID);
             }
+
 
         public LiveData<List<ApiResponseDrink>> getDrinkRandom()
             {

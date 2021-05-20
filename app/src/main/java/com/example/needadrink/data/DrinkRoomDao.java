@@ -6,6 +6,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -26,6 +27,10 @@ public interface DrinkRoomDao
 
         @Query("Update drink_table set isFav = 1 Where idDrink = :drinkID ")
         void setFav(String drinkID);
+
+        @Query("Update drink_table set isFav = 0 Where idDrink = :drinkID ")
+        void removeFav(String drinkID);
+
 
         @Query("SELECT * FROM drink_table where isFav = 1")
         LiveData<List<Drink>> getFavDrinks();

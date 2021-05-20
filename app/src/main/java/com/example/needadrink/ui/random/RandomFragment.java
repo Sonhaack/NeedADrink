@@ -33,6 +33,7 @@ public class RandomFragment extends Fragment
 
                 random.setOnClickListener(v ->
                 {
+
                     randomViewModel.getRandomDrink();
                 });
 

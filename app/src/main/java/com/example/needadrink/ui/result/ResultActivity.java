@@ -47,7 +47,6 @@ public class ResultActivity extends AppCompatActivity
                 String drinkJson;
                 if(extra != null)
                     {
-
                         drinkJson = extra.getString("drink");
                         if(drinkJson.equals("random"))
                             {
@@ -123,10 +122,18 @@ public class ResultActivity extends AppCompatActivity
 
                 fav.setOnClickListener(v ->
                 {
-                    resultViewModel.setFav(drink.getValue().idDrink);
-                    Toast.makeText(this, "Added to favourites", Toast.LENGTH_SHORT).show();
 
+
+                    if(drink.getValue().isFav == 0)
+                        {
+                            Toast.makeText(getBaseContext(), "Added to favorites", Toast.LENGTH_SHORT).show();
+                            resultViewModel.setFav(drink.getValue().idDrink);
+                        }
+                    else
+                        {
+                            resultViewModel.removeFav(drink.getValue().idDrink);
+                            Toast.makeText(getBaseContext(), "Removed from favorites", Toast.LENGTH_SHORT).show();
+                        }
                 });
             }
-
     }
