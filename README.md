@@ -2,14 +2,24 @@
 
 #After the TrefleAPI stopped working i decided to start a new projekt#
 
-The NeedADrink app is an app where you can look up a drink and save your favourite drinks for your party. 
+After drinking my sorrows away i found that i was drinking the same drinks everytime. 
+I found that i was in need of inspiration for new drinks and thought it would be nice to have an app that could help with just that!
 
-Must have:
+The NeedADrink app is an app where you can look up drinks and save them for later use.
 
-Be able to search for a drink and get information about the drink.
+Must-have:
 
-Be able to save your favourite drinks.
+- [x] Be able to search for a specifik drink.
+- [x] Be able to get information on a random drink. 
+- [x] Be able to safe information on a drink.
 
-Could have: 
+Should have: 
 
-Share drink on social media.
+- [ ] Share drink with friend on social media.
+- [ ] Search for drinks by categories.
+
+Could have:
+
+- [ ] Create notes on a drink. 
+
+Youtube link: 
