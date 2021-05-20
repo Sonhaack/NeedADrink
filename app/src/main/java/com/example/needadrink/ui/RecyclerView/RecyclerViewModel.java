@@ -15,17 +15,22 @@ public class RecyclerViewModel extends AndroidViewModel
 
         private DrinkRepository drinkRepository;
         private LiveData<List<Drink>> allDrinks;
+        private LiveData<List<Drink>> searchDrinks;
 
         public RecyclerViewModel(Application application)
             {
                 super(application);
                 drinkRepository = new DrinkRepository(application);
                 allDrinks = drinkRepository.getAllDrinks();
-
+                searchDrinks = drinkRepository.getSearchDrinks();
             }
         public LiveData<List<Drink>> getAllDrinks()
             {
                 return allDrinks;
             }
 
+        public LiveData<List<Drink>> getSearchDrinks()
+            {
+                return drinkRepository.getSearchDrinks();
+            }
     }

@@ -6,10 +6,10 @@ import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.example.needadrink.data.ApiResponseDrink;
 import com.example.needadrink.data.Drink;
 import com.example.needadrink.data.DrinkRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ResultViewModel extends AndroidViewModel
@@ -36,4 +36,13 @@ public class ResultViewModel extends AndroidViewModel
                 drinkRepository.setFavDrink(drinkID);
             }
 
+        public LiveData<List<ApiResponseDrink>> getRandomDrink()
+            {
+                return drinkRepository.getDrinkRandom();
+            }
+
+        public void getRandomDrinkFromApi()
+            {
+                drinkRepository.randomDrink();
+            }
     }

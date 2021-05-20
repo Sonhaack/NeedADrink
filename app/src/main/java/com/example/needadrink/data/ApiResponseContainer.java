@@ -13,8 +13,4 @@ public class ApiResponseContainer
                 return drinks;
             }
 
-        public void setDrinks(List<ApiResponseDrink> drinks)
-            {
-                this.drinks = drinks;
-            }
     }

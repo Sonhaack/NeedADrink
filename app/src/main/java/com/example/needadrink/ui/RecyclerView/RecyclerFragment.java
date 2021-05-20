@@ -50,9 +50,15 @@ public class RecyclerFragment extends Fragment
                             }
                     });
 
-                recyclerViewModel.getAllDrinks().observe(getViewLifecycleOwner(), drinks -> drinkAdapter.setDrinks(drinks));
+                recyclerViewModel.getAllDrinks().observe(getViewLifecycleOwner(), new Observer<List<Drink>>()
+                    {
+                        @Override
+                        public void onChanged(List<Drink> drinks)
+                            {
+                                drinkAdapter.setDrinks(drinks);
+                                recyclerView.setAdapter(drinkAdapter);
+                            }
+                    });
                 return root;
             }
-
-
     }

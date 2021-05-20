@@ -13,4 +13,6 @@ public interface DrinkApi
         @GET("search.php")
         Call<ApiResponseContainer> searchDrink(@Query("s") String drink);
 
+        @GET("random.php")
+        Call<ApiResponseContainer> randomDrink();
     }

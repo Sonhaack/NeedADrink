@@ -21,6 +21,9 @@ public interface DrinkRoomDao
         @Query("SELECT * FROM drink_table")
         LiveData<List<Drink>> getAllDrinks();
 
+        @Query("Select * from drink_table where strDrink LIKE :search")
+        LiveData<List<Drink>> getSearchDrinks(String search);
+
         @Query("Update drink_table set isFav = 1 Where idDrink = :drinkID ")
         void setFav(String drinkID);
 

@@ -1,22 +1,32 @@
 package com.example.needadrink.ui.result;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.needadrink.R;
+import com.example.needadrink.data.ApiResponseDrink;
 import com.example.needadrink.data.DownloadImageTask;
 import com.example.needadrink.data.Drink;
 import com.google.gson.Gson;
 
+import java.util.List;
 
 
 public class ResultActivity extends AppCompatActivity
     {
         private ResultViewModel resultViewModel;
-
+        MutableLiveData<Drink> drink;
+        ImageView img;
+        ImageView fav;
+        TextView drinkname;
+        TextView alcoholic;
+        TextView ingredient;
+        TextView instructions;
         @Override
         protected void onCreate(Bundle savedInstanceState)
             {
@@ -25,78 +35,98 @@ public class ResultActivity extends AppCompatActivity
                 setContentView(R.layout.activity_result);
                 Bundle extra = getIntent().getExtras();
 
-                ImageView img = findViewById(R.id.result_image);
-                ImageView fav = findViewById(R.id.result_heart);
-                TextView drinkname = findViewById(R.id.result_drinkname);
-                TextView alcoholic = findViewById(R.id.result_alcoholic);
-                TextView ingredient = findViewById(R.id.result_ingredients);
-                TextView instructions = findViewById(R.id.result_instructions);
+                drink = new MutableLiveData<>();
+                img = findViewById(R.id.result_image);
+                fav = findViewById(R.id.result_heart);
+                drinkname = findViewById(R.id.result_drinkname);
+                alcoholic = findViewById(R.id.result_alcoholic);
+                ingredient = findViewById(R.id.result_ingredients);
+                instructions = findViewById(R.id.result_instructions);
 
 
                 String drinkJson;
                 if(extra != null)
                     {
+
                         drinkJson = extra.getString("drink");
-                        Gson gson = new Gson();
-                        Drink drink = gson.fromJson(drinkJson, Drink.class);
-
-
-                        drinkname.setText(drink.getStrDrink());
-                        alcoholic.setText(drink.getStrAlcoholic());
-
-                        String ingredients = "";
-
-                        if(drink.getStrIngredient1() != null)
-                            ingredients += drink.getStrIngredient1() + ", ";
-                        if(drink.getStrMeasure1() != null)
-                            ingredients += " " + drink.getStrMeasure1() + "\n";
-
-                        if(drink.getStrIngredient2() != null)
-                            ingredients += drink.getStrIngredient2() + ", ";
-                        if(drink.getStrMeasure2() != null)
-                            ingredients += drink.getStrMeasure2() + "\n";;
-
-                        if(drink.getStrIngredient3() != null)
-                            ingredients += drink.getStrIngredient3() + ", ";
-                        if(drink.getStrMeasure3() != null)
-                            ingredients += drink.getStrMeasure3() + "\n";;
-
-                        if(drink.getStrIngredient4() != null)
-                            ingredients += drink.getStrIngredient4() + ", ";
-                        if(drink.getStrMeasure4() != null)
-                            ingredients += drink.getStrMeasure4() + "\n";
-
-                        if(drink.getStrIngredient5() != null)
-                            ingredients += drink.getStrIngredient5() + ", ";
-                        if(drink.getStrMeasure5() != null)
-                            ingredients += drink.getStrMeasure5() + "\n";;
-
-                        if(drink.getStrIngredient6() != null)
-                            ingredients += drink.getStrIngredient6() + ", ";
-                        if(drink.getStrMeasure6() != null)
-                            ingredients += drink.getStrMeasure6() + "\n";;
-
-                        if(drink.getStrIngredient7() != null)
-                            ingredients += drink.getStrIngredient7() + ", ";
-                        if(drink.getStrMeasure7() != null)
-                            ingredients += drink.getStrMeasure7() + "\n";;
-
-                        if(drink.getStrIngredient8() != null)
-                            ingredients += drink.getStrIngredient8() + ", ";
-                        if(drink.getStrMeasure8() != null)
-                            ingredients += drink.getStrMeasure8() + "\n";;
-
-                        ingredient.setText(ingredients);
-                        instructions.setText(drink.getStrInstructions());
-                        new DownloadImageTask(img).execute(drink.strDrinkThumb);
-
-                        fav.setOnClickListener(v ->
-                        {
-
-                            resultViewModel.setFav(drink.idDrink);
-                            Toast.makeText(this, "Added to favourites", Toast.LENGTH_SHORT).show();
-
-                        });
+                        if(drinkJson.equals("random"))
+                            {
+                                resultViewModel.getRandomDrink().observeForever(new Observer<List<ApiResponseDrink>>()
+                                    {
+                                        @Override
+                                        public void onChanged(List<ApiResponseDrink> apiResponseDrinks)
+                                            {
+                                                drink.setValue(new Drink(apiResponseDrinks.get(0)));
+                                                setView();
+                                            }
+                                    });
+                            }
+                        else
+                            {
+                                Gson gson = new Gson();
+                                drink.setValue(gson.fromJson(drinkJson, Drink.class));
+                                setView();
+                            }
                     }
+                resultViewModel.getRandomDrinkFromApi();
             }
+        private void setView()
+            {
+                drinkname.setText(drink.getValue().getStrDrink());
+                alcoholic.setText(drink.getValue().getStrAlcoholic());
+
+                String ingredients = "";
+
+                if(drink.getValue().getStrIngredient1() != null)
+                    ingredients += drink.getValue().getStrIngredient1() + ", ";
+                if(drink.getValue().getStrMeasure1() != null)
+                    ingredients += " " + drink.getValue().getStrMeasure1() + "\n";
+
+                if(drink.getValue().getStrIngredient2() != null)
+                    ingredients += drink.getValue().getStrIngredient2() + ", ";
+                if(drink.getValue().getStrMeasure2() != null)
+                    ingredients += drink.getValue().getStrMeasure2() + "\n";;
+
+                if(drink.getValue().getStrIngredient3() != null)
+                    ingredients += drink.getValue().getStrIngredient3() + ", ";
+                if(drink.getValue().getStrMeasure3() != null)
+                    ingredients += drink.getValue().getStrMeasure3() + "\n";;
+
+                if(drink.getValue().getStrIngredient4() != null)
+                    ingredients += drink.getValue().getStrIngredient4() + ", ";
+                if(drink.getValue().getStrMeasure4() != null)
+                    ingredients += drink.getValue().getStrMeasure4() + "\n";
+
+                if(drink.getValue().getStrIngredient5() != null)
+                    ingredients += drink.getValue().getStrIngredient5() + ", ";
+                if(drink.getValue().getStrMeasure5() != null)
+                    ingredients += drink.getValue().getStrMeasure5() + "\n";;
+
+                if(drink.getValue().getStrIngredient6() != null)
+                    ingredients += drink.getValue().getStrIngredient6() + ", ";
+                if(drink.getValue().getStrMeasure6() != null)
+                    ingredients += drink.getValue().getStrMeasure6() + "\n";;
+
+                if(drink.getValue().getStrIngredient7() != null)
+                    ingredients += drink.getValue().getStrIngredient7() + ", ";
+                if(drink.getValue().getStrMeasure7() != null)
+                    ingredients += drink.getValue().getStrMeasure7() + "\n";;
+
+                if(drink.getValue().getStrIngredient8() != null)
+                    ingredients += drink.getValue().getStrIngredient8() + ", ";
+                if(drink.getValue().getStrMeasure8() != null)
+                    ingredients += drink.getValue().getStrMeasure8() + "\n";;
+
+                ingredient.setText(ingredients);
+                instructions.setText(drink.getValue().getStrInstructions());
+                new DownloadImageTask(img).execute(drink.getValue().strDrinkThumb);
+
+                fav.setOnClickListener(v ->
+                {
+                    resultViewModel.setFav(drink.getValue().idDrink);
+                    Toast.makeText(this, "Added to favourites", Toast.LENGTH_SHORT).show();
+
+                });
+            }
+
     }

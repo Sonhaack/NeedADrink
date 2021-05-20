@@ -25,7 +25,7 @@ public class HomeFragment extends Fragment
         public View onCreateView(@NonNull LayoutInflater inflater,
                                  ViewGroup container, Bundle savedInstanceState)
             {
-                homeViewModel = new ViewModelProvider(getActivity()).get(HomeViewModel.class);
+                homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
                 View root = inflater.inflate(R.layout.fragment_home, container, false);
 
                  EditText name = root.findViewById(R.id.editTextTextPersonName);
@@ -36,6 +36,7 @@ public class HomeFragment extends Fragment
                 buttonSearch.setOnClickListener(v ->
                 {
                     homeViewModel.searchDrink(name.getText().toString());
+
 
                     // start new fragment
                     FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
