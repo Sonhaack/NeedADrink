@@ -1,11 +1,11 @@
-# NeedADrink
+# Need A Drink
 
 #After the TrefleAPI stopped working i decided to start a new projekt#
 
 After drinking my sorrows away i found that i was drinking the same drinks everytime. 
 I found that i was in need of inspiration for new drinks and thought it would be nice to have an app that could help with just that!
 
-The NeedADrink app is an app where you can look up drinks and save them for later use.
+The Need A Drink app is an app where you can look up drinks and save them for later use.
 
 Must-have:
 
